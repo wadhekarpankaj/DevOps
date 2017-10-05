@@ -1,0 +1,17 @@
+node {
+    stage('Checkout') {
+    echo '*************Checkout started*************'
+   // checkout([$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [[credentialsId: 'SVN', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: 'https://synps8154805.syntelorg.com/svn/DevOpsRepo/DevOpsProject_Shipment/trunk']], workspaceUpdater: [$class: 'UpdateUpdater']])
+   // gcheckout 'Hello'
+    gcheckout 'https://synps8154805.syntelorg.com/svn/DevOpsRepo/DevOpsProject_Shipment/trunk'
+    echo '*************Checkout completed*************'
+    
+  }
+  
+  stage('Build') {
+      echo 'Build started'
+      gbuild 'clean compile -s settings.xml'
+      echo 'Build compleated'
+  }
+    
+}
